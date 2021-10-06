@@ -4,7 +4,15 @@ function computerPlay() {
     let randomNumber = Math.floor(Math.random() * selections.length);
     let randomSelection = selections[randomNumber];
     return randomSelection;
+    
 }
+
+// player selection function
+function playerInput() {
+    let input = prompt("Enter your choice").toLowerCase();
+    return input;
+}
+
 
 // function play with two parameters- playerSelection, computerSelection
 // return a winner "You Lose! Paper beats Rock"
@@ -23,27 +31,27 @@ function playRound(playerSelection, computerSelection) {
     // Player selects rock
     function playerSelectRock(playerSelection, computerSelection) {
         if (playerSelection === 'rock' && computerSelection === 'paper') {
-            message =(`You lost, Computer selected ${computerSelection}`);
+            message =(`You lost, ${computerSelection} beats ${playerSelection}`);
         } else if(playerSelection === 'rock' && computerSelection === 'scissors') {
-            message =(`You won!!, Computer selected ${computerSelection}`)
+            message =(`You won!!, ${playerSelection} beats ${computerSelection}`)
         }
     }
     
     // player selects paper
     function playerSelectPaper(playerSelection, computerSelection) {
         if (playerSelection === 'paper' && computerSelection === 'rock') {
-            message =(`You won!!, Computer selected ${computerSelection}`);
+            message =(`You won!!, ${playerSelection} beats ${computerSelection}`);
         } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-            message =(`You lost, Computer selected ${computerSelection}`);
+            message =(`You lost, ${computerSelection} beats ${playerSelection}`);
         }
     }
 
     // player selects scissors
     function playerSelectScissors(playerSelection, computerSelection) {
         if (playerSelection === 'scissors' && computerSelection === 'rock') {
-            message =(`You lost, Computer selected ${computerSelection}`);
+            message =(`You lost, ${computerSelection} beats ${playerSelection}`);
         } else if (playerSelection === 'scissors' && computerSelection === 'papper') {
-            message =(`You won!!, Computer selected ${computerSelection}`);
+            message =(`You won!!, ${playerSelection} beats ${computerSelection}`);
         }
     }
 
@@ -53,23 +61,33 @@ function playRound(playerSelection, computerSelection) {
     playerSelectPaper(playerSelection, computerSelection);
     playerSelectScissors(playerSelection, computerSelection);
 
-    return(message);
+    return message;
 }
 
-let playerSelection;
+
+const playerSelection = playerInput();
 const computerSelection = computerPlay();
-// console.log(playRound(playerSelection, computerSelection));
+console.log(computerSelection);
+console.log(playRound(playerSelection, computerSelection));
+
 
 
 // main function to play 5 rounds
-function game() {
+function game(playerSelection, computerSelection) {
+    let play;
+    // initialize computer score
+    // initialize player score
+    // keep track of the score
+    // declare the winner
+
     for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Enter your choice").toLowerCase();
-        console.log(playRound(playerSelection, computerSelection));
-    }
+        playerSelection = playerInput();
+        computerSelection = computerPlay();
+    } 
+
 }
 
-game();
+
 
 
 
