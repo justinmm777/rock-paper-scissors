@@ -73,13 +73,13 @@ for (let i = 0; i < 5; i++) {
 // function to decide the winner 
 function win(computerScore, playerScore) {
     if (computerScore > playerScore) {
-        winner = "Bot won the game";
+        winner = "Bot won the game!!";
     } else if (computerScore < playerScore) {
         winner = "You won the game!!"
     } else {
         winner = "It is a draw loo!!!"
     }
-    document.getElementById("finalResult").innerHTML = `Final Result: ${winner}`;
+    document.getElementById("finalResult").innerHTML = `${winner}`;
     return winner;
 }
 
