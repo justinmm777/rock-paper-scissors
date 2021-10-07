@@ -1,4 +1,4 @@
-// calculating winner
+// initializing the variables
 let computerScore = 0;
 let playerScore = 0;
 let NumberOfDraws = 0;
@@ -15,10 +15,10 @@ function game() {
 
     // player selection function
     function playerInput() {
-        let input = prompt("Enter your choice").toLowerCase();
+        let input = prompt("Enter your choice Rock, Paper, Scissors").toLowerCase();
         return input;
     }
-
+        
     // function play with two parameters- playerSelection, computerSelection
     // return a winner "You Lose! Paper beats Rock"
     // Scissors beats Paper
@@ -81,10 +81,15 @@ function game() {
     console.log(playRound(playerSelection, computerSelection));
 }
 
+
 for (let i = 0; i < 5; i++) {
     game();
 }
 
+
+   
+
+// function to decide the winner 
 function win(computerScore, playerScore) {
     let winner;
     if (computerScore > playerScore) {
@@ -96,10 +101,17 @@ function win(computerScore, playerScore) {
     }
     return winner;
 }
+
 console.log(`Number of Draws: ${NumberOfDraws}`)
 console.log(`Computer Score: ${computerScore}`);
 console.log(`Player Score: ${playerScore}`);
 console.log(win(computerScore, playerScore));
+
+
+// could not validate the input}
+// if (playerSelection === ' '|| playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissors') {
+// playerInput();
+
 
 
 
