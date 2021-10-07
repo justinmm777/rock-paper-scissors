@@ -90,14 +90,6 @@ console.log(`Computer Score: ${computerScore}`);
 console.log(`Player Score: ${playerScore}`);
 console.log(winner);
 
-// could not validate the input}
-// if (playerSelection === ' '|| 
-// playerSelection !== 'rock' || 
-// playerSelection !== 'paper' || 
-// playerSelection !== 'scissors') {
-// playerInput();
-
-
 
 
 
