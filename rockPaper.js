@@ -61,7 +61,7 @@ function game() {
             if (playerSelection === 'scissors' && computerSelection === 'rock') {
                 message =(`You lost, ${computerSelection} beats ${playerSelection}`);
                 computerScore++;
-            } else if (playerSelection === 'scissors' && computerSelection === 'papper') {
+            } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
                 message =(`You won!!, ${playerSelection} beats ${computerSelection}`);
                 playerScore++;
             }
