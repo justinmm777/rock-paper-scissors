@@ -32,7 +32,7 @@ function game() {
                 message = (`It is a draw, you both selected ${computerSelection}`);
                 numberOfDraws++;
                 document.getElementById("numberOfDraws").innerHTML = `Number of Draws: ${numberOfDraws}`;
-                document.getElementById("result").innerHTML =`Round Result: ${message}`;
+                document.getElementById("result").innerHTML =`Each Round Result: ${message}`;
             }
         }
 
