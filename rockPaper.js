@@ -4,7 +4,6 @@ let playerScore = 0;
 let numberOfDraws = 0;
 let winner;
 
-
 function game() {
     // function computer play to return randomly Rock, Paper or Scissors
     function computerPlay() {
@@ -32,47 +31,32 @@ function game() {
             if (playerSelection === computerSelection) {
                 message = (`It is a draw, you both selected ${computerSelection}`);
                 numberOfDraws++;
+                document.getElementById("numberOfDraws").innerHTML = `Number of Draws: ${numberOfDraws}`;
+                document.getElementById("result").innerHTML =`Round Result: ${message}`;
             }
         }
 
-        // Player selects rock
-        function playerSelectRock(playerSelection, computerSelection) {
-            if (playerSelection === 'rock' && computerSelection === 'paper') {
+        // comparing the player and computer selections
+        function winLose(playerSelection, computerSelection) {
+            if ((playerSelection === 'rock' && computerSelection === 'paper') || 
+            (playerSelection === 'paper' && computerSelection === 'scissors') || 
+            (playerSelection === 'scissors' && computerSelection === 'rock')) {
                 message =(`You lost, ${computerSelection} beats ${playerSelection}`);
                 computerScore++;
-            } else if(playerSelection === 'rock' && computerSelection === 'scissors') {
+                document.getElementById("computerScore").innerHTML = `Computer Score: ${computerScore}`;
+                document.getElementById("result").innerHTML = `Round Result: ${message}`;
+            } else if((playerSelection === 'rock' && computerSelection === 'scissors') ||  
+            (playerSelection === 'paper' && computerSelection === 'rock') ||
+            (playerSelection === 'scissors' && computerSelection === 'paper')) {
                 message =(`You won!!, ${playerSelection} beats ${computerSelection}`);
                 playerScore++;
+                document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
+                document.getElementById("result").innerHTML = `Round Result: ${message}`;
             }
         }
-        
-        // player selects paper
-        function playerSelectPaper(playerSelection, computerSelection) {
-            if (playerSelection === 'paper' && computerSelection === 'rock') {
-                message =(`You won!!, ${playerSelection} beats ${computerSelection}`);
-                playerScore++;
-            } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-                message =(`You lost, ${computerSelection} beats ${playerSelection}`);
-                computerScore++;
-            }
-        }
-
-        // player selects scissors
-        function playerSelectScissors(playerSelection, computerSelection) {
-            if (playerSelection === 'scissors' && computerSelection === 'rock') {
-                message =(`You lost, ${computerSelection} beats ${playerSelection}`);
-                computerScore++;
-            } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-                message =(`You won!!, ${playerSelection} beats ${computerSelection}`);
-                playerScore++;
-            }
-        }
-
         // calling all subfunctions
         gameDraw(playerSelection, computerSelection);
-        playerSelectRock(playerSelection, computerSelection);
-        playerSelectPaper(playerSelection, computerSelection);
-        playerSelectScissors(playerSelection, computerSelection);
+        winLose(playerSelection, computerSelection);
         return message;
     }
 
@@ -80,16 +64,11 @@ function game() {
     const computerSelection = computerPlay();
     console.log(computerSelection);
     console.log(playRound(playerSelection, computerSelection));
-
 }
-
 
 for (let i = 0; i < 5; i++) {
     game();
 }
-
-
-   
 
 // function to decide the winner 
 function win(computerScore, playerScore) {
@@ -100,20 +79,22 @@ function win(computerScore, playerScore) {
     } else {
         winner = "It is a draw loo!!!"
     }
+    document.getElementById("finalResult").innerHTML = `Final Result: ${winner}`;
     return winner;
 }
 
-console.log(`Number of Draws: ${numberOfDraws}`);
-document.getElementById("numberOfDraws").innerHTML = `Number of Draws: ${numberOfDraws}`;
-console.log(`Computer Score: ${computerScore}`);
-document.getElementById("computerScore").innerHTML = `Computer Score: ${computerScore}`;
-console.log(`Player Score: ${playerScore}`);
-document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
-document.getElementById("finalResult") = winner;
+win(computerScore, playerScore);
 
+console.log(`Number of Draws: ${numberOfDraws}`);
+console.log(`Computer Score: ${computerScore}`);
+console.log(`Player Score: ${playerScore}`);
+console.log(winner);
 
 // could not validate the input}
-// if (playerSelection === ' '|| playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissors') {
+// if (playerSelection === ' '|| 
+// playerSelection !== 'rock' || 
+// playerSelection !== 'paper' || 
+// playerSelection !== 'scissors') {
 // playerInput();
 
 
