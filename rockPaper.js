@@ -1,7 +1,8 @@
 // initializing the variables
 let computerScore = 0;
 let playerScore = 0;
-let NumberOfDraws = 0;
+let numberOfDraws = 0;
+let winner;
 
 
 function game() {
@@ -30,7 +31,7 @@ function game() {
         function gameDraw(playerSelection, computerSelection) {
             if (playerSelection === computerSelection) {
                 message = (`It is a draw, you both selected ${computerSelection}`);
-                NumberOfDraws++;
+                numberOfDraws++;
             }
         }
 
@@ -79,6 +80,7 @@ function game() {
     const computerSelection = computerPlay();
     console.log(computerSelection);
     console.log(playRound(playerSelection, computerSelection));
+
 }
 
 
@@ -91,7 +93,6 @@ for (let i = 0; i < 5; i++) {
 
 // function to decide the winner 
 function win(computerScore, playerScore) {
-    let winner;
     if (computerScore > playerScore) {
         winner = "Bot won the game";
     } else if (computerScore < playerScore) {
@@ -102,10 +103,13 @@ function win(computerScore, playerScore) {
     return winner;
 }
 
-console.log(`Number of Draws: ${NumberOfDraws}`)
+console.log(`Number of Draws: ${numberOfDraws}`);
+document.getElementById("numberOfDraws").innerHTML = `Number of Draws: ${numberOfDraws}`;
 console.log(`Computer Score: ${computerScore}`);
+document.getElementById("computerScore").innerHTML = `Computer Score: ${computerScore}`;
 console.log(`Player Score: ${playerScore}`);
-console.log(win(computerScore, playerScore));
+document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
+document.getElementById("finalResult") = winner;
 
 
 // could not validate the input}
