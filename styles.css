@@ -1,5 +1,4 @@
 html {
-    border: 2px solid red;
     background-color: rgb(179, 199, 202);
     margin: 10px;
     min-height: 100vh;
@@ -16,8 +15,8 @@ h1 {
     align-self: center;
 }
 .score {
-    border: 2px solid green;
-    background-color: rgb(155, 192, 155);
+    border: 2px solid rgb(47, 98, 192);
+    background-color: rgb(149, 198, 226);
 }
 
 .score > ul {
@@ -36,13 +35,17 @@ h1 {
     padding:10px;
 }
 
+.eachRoundResult > h1 {
+    color: black;
+}
+
 #finalResult {
     display: flex;
     font-weight: bold;
     font-size: 50px;
     align-self: center;
     justify-content: center;
-    background-color: rgb(224, 109, 64);
+    background-color: rgb(46, 207, 108);
     padding: 20px;
     margin-top: 150px;
 }
