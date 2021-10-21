@@ -4,75 +4,75 @@ let playerScore = 0;
 let numberOfDraws = 0;
 let message;
 let winner;
+let playerSelection;
+let computerSelection;
+let count;
 
-function game() {
-    // function computer play to return randomly Rock, Paper or Scissors
-    function computerPlay() {
-        let selections = ['rock', 'paper', 'scissors'];
-        let randomNumber = Math.floor(Math.random() * selections.length);
-        let randomSelection = selections[randomNumber];
-        return randomSelection; 
+
+
+// function computer play to return randomly Rock, Paper or Scissors
+let selections = ['rock', 'paper', 'scissors'];
+function computerPlay() {
+    let randomNumber = Math.floor(Math.random() * selections.length);
+    let randomSelection = selections[randomNumber];
+    return randomSelection; 
     }
 
-    // player selection function
-    function playerInput() {
-        let input = prompt("Enter your choice Rock, Paper, Scissors").toLowerCase();
-        return input;
-    }
-        
-    // function play with two parameters- playerSelection, computerSelection
-    // return a winner "You Lose! Paper beats Rock"
-    // Scissors beats Paper
-    // Paper beats Rock
-    // Rock beats Scissors
-    function playRound(playerSelection, computerSelection) {
-        // Both select same
-        function gameDraw(playerSelection, computerSelection) {
-            if (playerSelection === computerSelection) {
-                message = (`It is a draw, you both selected ${computerSelection}`);
-                numberOfDraws++;
-                document.getElementById("numberOfDraws").innerHTML = `Number of Draws: ${numberOfDraws}`;
-            }
+// player selection function
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playerSelection = button.id;
+        playRound(playerSelection, computerSelection);
+       
+        let result = document.getElementById("result");
+        let text = document.createTextNode(`${message}`);
+        result.appendChild(text);
+        let lineBreak = document.createElement('br');
+        result.appendChild(lineBreak);      
+    
+
+        if (playerScore === 5 || computerScore === 5) {
+            win(computerScore, playerScore);
+            document.getElementById("finalResult").innerHTML = `${winner}`;
+            reset();
+            console.log(winner);
+            
         }
+    });
+});
+    
 
-        // comparing the player and computer selections
-        function winLose(playerSelection, computerSelection) {
-            if ((playerSelection === 'rock' && computerSelection === 'paper') || 
-            (playerSelection === 'paper' && computerSelection === 'scissors') || 
-            (playerSelection === 'scissors' && computerSelection === 'rock')) {
-                message =(`You lost, ${computerSelection} beats ${playerSelection}`);
-                computerScore++;
-                document.getElementById("computerScore").innerHTML = `Computer Score: ${computerScore}`;
-            } else if((playerSelection === 'rock' && computerSelection === 'scissors') ||  
-            (playerSelection === 'paper' && computerSelection === 'rock') ||
-            (playerSelection === 'scissors' && computerSelection === 'paper')) {
-                message =(`You won!!, ${playerSelection} beats ${computerSelection}`);
-                playerScore++;
-                document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
-            }
-        }
-        // calling all subfunctions
-        gameDraw(playerSelection, computerSelection);
-        winLose(playerSelection, computerSelection);
-        return message;
-        
+// function play with two parameters- playerSelection, computerSelection
+// return a winner "You Lose! Paper beats Rock"
+// Scissors beats Paper
+// Paper beats Rock
+// Rock beats Scissors
+function playRound(playerSelection, computerSelection) {
+    computerSelection = computerPlay();
+    playerSelection = playerSelection;
+    // Both select same
+    if (playerSelection === computerSelection) {
+        message = (`It is a draw, you both selected ${computerSelection}`);
+        numberOfDraws++;
+        document.getElementById("numberOfDraws").innerHTML = `Number of Draws: ${numberOfDraws}`;
+    } else if ((playerSelection === 'rock' && computerSelection === 'paper') || 
+        (playerSelection === 'paper' && computerSelection === 'scissors') || 
+        (playerSelection === 'scissors' && computerSelection === 'rock')) {
+            message =(`You lost, ${computerSelection} beats ${playerSelection}`);
+            computerScore++;
+            document.getElementById("computerScore").innerHTML = `Computer Score: ${computerScore}`;
+    } else if((playerSelection === 'rock' && computerSelection === 'scissors') ||  
+    (playerSelection === 'paper' && computerSelection === 'rock') ||
+    (playerSelection === 'scissors' && computerSelection === 'paper')) {
+        message =(`You won!!, ${playerSelection} beats ${computerSelection}`);
+        playerScore++;
+        document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
     }
 
-    const playerSelection = playerInput();
-    const computerSelection = computerPlay();
-    console.log(computerSelection);
-    console.log(playRound(playerSelection, computerSelection)); 
+console.log(computerSelection);
+console.log(playerSelection);
 }
-
-text = "<ul>";
-for (let i = 0; i < 5; i++) {
-    game();
-    text += "<li>" + `${message}` + "</li>";
-    document.getElementById("result").innerHTML = text;
-    // document.getElementById("result").innerHTML = `Round Result: ${message}`;
-}
-text += "</ul>";
-
 
 // function to decide the winner 
 function win(computerScore, playerScore) {
@@ -86,13 +86,18 @@ function win(computerScore, playerScore) {
     return winner;
 }
 
-win(computerScore, playerScore);
-
 console.log(`Number of Draws: ${numberOfDraws}`);
 console.log(`Computer Score: ${computerScore}`);
 console.log(`Player Score: ${playerScore}`);
-console.log(winner);
-document.getElementById("finalResult").innerHTML = `${winner}`;
+
+function reset(){
+    const resetButton = document.createElement("BUTTON");
+    resetButton.innerText = "Refresh";
+    document.querySelector('.btnBox').appendChild(resetButton);
+};
+
+   
+
 
 
 
