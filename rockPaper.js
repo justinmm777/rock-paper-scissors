@@ -73,13 +73,13 @@ console.log(playerSelection);
 
 // function to decide the winner 
 function win(computerScore, playerScore) {
-    if (computerScore > playerScore) {
-        winner = "Bot won the game!!";
-    } else if (computerScore < playerScore) {
-        winner = "You won the game!!"
-    } else {
+    if (numberOfDraws === 5){
         winner = "It is a draw loo!!!"
-    }
+    } else if (computerScore > playerScore) {
+        winner = "Bot won the game!!";
+    } else {
+        winner = "You won the game!!"
+    } 
     return winner;
 }
 
