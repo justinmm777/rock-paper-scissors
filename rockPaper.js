@@ -6,7 +6,6 @@ let message;
 let winner;
 let playerSelection;
 let computerSelection;
-let count;
 
 
 
@@ -31,13 +30,11 @@ buttons.forEach((button) => {
         let lineBreak = document.createElement('br');
         result.appendChild(lineBreak);      
     
-
-        if (playerScore === 5 || computerScore === 5) {
+        if (playerScore === 5 || computerScore === 5 || numberOfDraws === 5) {
             win(computerScore, playerScore);
             document.getElementById("finalResult").innerHTML = `${winner}`;
-            reset();
             console.log(winner);
-            
+            removeRefresh()
         }
     });
 });
@@ -90,13 +87,24 @@ console.log(`Number of Draws: ${numberOfDraws}`);
 console.log(`Computer Score: ${computerScore}`);
 console.log(`Player Score: ${playerScore}`);
 
-function reset(){
+function resetGame(){
     const resetButton = document.createElement("BUTTON");
     resetButton.innerText = "Refresh";
-    document.querySelector('.btnBox').appendChild(resetButton);
+    resetButton.className = "restBtn";
+    document.querySelector(".btnRefresh").appendChild(resetButton);
+    resetButton.addEventListener('click', () => {
+        location.reload();
+    })
 };
 
-   
+function removeBtn() {
+    document.getElementById("btnDiv").remove(); 
+}
+
+function removeRefresh() {
+    removeBtn();
+    resetGame();
+}
 
 
 
